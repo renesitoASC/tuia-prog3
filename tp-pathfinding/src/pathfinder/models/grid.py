@@ -111,3 +111,13 @@ class Grid:
 
     def __repr__(self) -> str:
         return f"Grid([[...], ...], {self.initial}, {self.end})"
+
+
+    def heuristica(self,state) -> float:  # METODO AGREGADO PARA LLEVAR A CABO ESTRATEGAS INFORMADAS (GBFS Y A*)
+        # DISTANCIA DE MANHATTAN
+        objetivoX,objetivoY = self.objective_test()
+        
+        actualX,actualY = state
+        
+        return abs(actualX - objetivoX) + abs(actualY - objetivoY)
+    
