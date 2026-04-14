@@ -32,7 +32,7 @@ class GreedyBestFirstSearch:
         while not frontier.is_empty():
             nodo = frontier.pop()
             if grid.objective_test(nodo.state):
-                return Solution(nodo)
+                return Solution(nodo,reached)
             
             for acciones in grid.actions(nodo.state):
                 nuevoEstado = grid.result(nodo.state,acciones)

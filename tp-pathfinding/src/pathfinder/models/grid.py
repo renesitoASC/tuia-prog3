@@ -115,7 +115,7 @@ class Grid:
 
     def heuristica(self,state) -> float:  # METODO AGREGADO PARA LLEVAR A CABO ESTRATEGAS INFORMADAS (GBFS Y A*)
         # DISTANCIA DE MANHATTAN
-        objetivoX,objetivoY = self.objective_test()
+        objetivoX,objetivoY = self.end
         
         actualX,actualY = state
         
