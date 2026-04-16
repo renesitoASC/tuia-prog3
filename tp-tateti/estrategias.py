@@ -10,7 +10,6 @@ Por defecto, se incluye una estrategia aleatoria como ejemplo base.
 from math import inf
 import random
 from typing import List, Tuple
-from uuid import MAX
 from tateti import Tateti, JUGADOR_MAX, JUGADOR_MIN
 
 
@@ -56,6 +55,15 @@ def minimax_min(tateti:Tateti,estado:List[List[str]]) -> float:    # FUNCION MIN
 
 
 def estrategia_minimax(tateti: Tateti, estado: List[List[str]]) -> Tuple[int, int]:
+    if tateti.jugador(estado) == JUGADOR_MAX:
+        sucesor = {'accion': minimax_min(tateti,tateti.resultado(estado,acciones))
+                   for acciones in tateti.acciones(estado)}
+        return max(sucesor,key=sucesor.pop())
+    
+    if tateti.jugador(estado) == JUGADOR_MIN:
+        sucesor = {'accion': minimax_max(tateti,tateti.resultado(estado,acciones))
+                   for acciones in tateti.acciones(estado)}
+        return min(sucesor,key=sucesor.pop())
     """
     Estrategia minimax: elige la mejor acción usando el algoritmo minimax.
     
@@ -69,6 +77,4 @@ def estrategia_minimax(tateti: Tateti, estado: List[List[str]]) -> Tuple[int, in
     Raises:
         NotImplementedError: Hasta que el alumno implemente el algoritmo
     """
-    if tateti.jugador(estado) == JUGADOR_MAX:
-        
-        
+    
